@@ -69,6 +69,13 @@ class Series extends CI_Controller {
         $this->load->view('frontend/footer');        
     }
 
+    function editcomic($id){
+        $data['comic'] = $this->mdl_series->getComic($id)->row();
+        $this->load->view('frontend/header');
+        $this->load->view('frontend/editComic',$data);
+        $this->load->view('frontend/footer');        
+    }
+
     function simpanNovel(){
         $title = $this->input->post('title');
         $desc = $this->input->post('description');
@@ -419,22 +426,90 @@ class Series extends CI_Controller {
         $d = $this->mdl_series->getLastComic($author_id)->row();
         $path = './assets/img/creator/'.$username.'/comic/'.$d->comic_id;
         mkdir( $path, 0777, true );
+
         $config['upload_path']='./assets/img/creator/'.$username.'/comic/'; //path folder file upload
         $config['allowed_types']='gif|jpg|png'; //type file yang boleh di upload
         $config['file_name'] = $imageName;
          
         $this->load->library('upload',$config); //call library upload 
 
-        if($this->upload->do_upload("file")){ //upload file
-            echo "Sukses";
-        }else{
-            echo "Gagal";
-        }
-        //move_uploaded_file($_FILES['file']['tmp_name'], base_url('assets/img/creator/'.$username.'/novel/'.$imageName));
+        $this->upload->do_upload("file");//upload file
+         
+    }
+
+    function updateComic(){
+        $id = $this->input->post('id');
+        $title = $this->input->post('title');
+        $desc = $this->input->post('description');
+        $genre = $this->input->post('genres');
+        $username = $this->getLog()->author_username;
+        if(!empty($_FILES['file']['name'])){
+            $ext = pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+
+            $imgName = str_replace(' ','', strtolower($title));
+            $imageName = $imgName.'.'.$ext;
         
-        //echo base_url('assets/img/creator/'.$username.'/novel/'.$imageName);
+            $data = array(
+                'comic_judul' => $title,
+                'comic_desc' => $desc,
+                'comic_genre' => $genre,
+                'comic_cover' => $imageName
+            );
+            $where = array(
+                'comic_id' => $id
+            );
+
+            //print_r();
+            $this->mdl_series->update_data($where,$data,'comic');
+
+            $config['upload_path']='./assets/img/creator/'.$username.'/comic/'; //path folder file upload
+            $config['allowed_types']='gif|jpg|png'; //type file yang boleh di upload
+            $config['file_name'] = $imageName;
+            $config['overwrite'] = TRUE;
+
+             
+            $this->load->library('upload',$config); //call library upload 
+
+            $this->upload->do_upload("file");
+        }else{
+            $data = array(
+                'comic_judul' => $title,
+                'comic_desc' => $desc,
+                'comic_genre' => $genre,
+            );
+            $where = array(
+                'comic_id' => $id
+            );
+
+            $this->mdl_series->update_data($where,$data,'comic');
+        }
 
     }
+
+
+
+    function deletecomic($id){
+        $row = $this->mdl_series->get_author($id)->row();
+
+        $where = array(
+            'comic_id' => $id
+        );
+        $this->mdl_series->hapus_data($where,'comic');
+
+        //=================================================
+        $path = './assets/img/creator/'.$row->author_username.'/comic/'.$row->comic_id;
+        $path2 = './assets/img/creator/'.$row->author_username.'/comic/'.$row->comic_cover;
+        $this->load->helper("file"); // load the helper
+        delete_files($path, true);
+        unlink($path2);
+        rmdir($path);
+
+        //=================================================
+
+        redirect('fndashboard','refresh');
+    }
+
+    
 
     function addComicEpisode($id){
         $data['comic'] = $this->mdl_series->getComic($id)->row();

@@ -98,7 +98,16 @@ class Fndashboard extends CI_Controller {
                         </ul>
                     </div>
                 </li>';
+
 		}
+        $html.='<script type="text/javascript">
+                $(function(){
+                    $(".hps").click(function(){
+                        return confirm("Hapus Series Beserta Semua Episode ?");
+                        console.log("asd");
+                    });
+                })
+                </script>';
 		echo $html;
 	}
 
@@ -177,6 +186,14 @@ class Fndashboard extends CI_Controller {
                     </div>
                 </li>';
 		}
+        $html.='<script type="text/javascript">
+                $(function(){
+                    $(".hps").click(function(){
+                        return confirm("Hapus Series Beserta Semua Episode ?");
+                        console.log("asd");
+                    });
+                })
+                </script>';
 		echo $html;
 	}
 
@@ -255,6 +272,14 @@ class Fndashboard extends CI_Controller {
                     </div>
                 </li>';
 		}
+        $html.='<script type="text/javascript">
+                $(function(){
+                    $(".hps").click(function(){
+                        return confirm("Hapus Series Beserta Semua Episode ?");
+                        console.log("asd");
+                    });
+                })
+                </script>';
 		echo $html;
 	}
 

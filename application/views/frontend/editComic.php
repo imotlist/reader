@@ -22,7 +22,7 @@
                 <div class="right-side">
                     <ul>
                         <li class="">
-                            <a href="#" target="_blank">
+                            <a href="https://help.tapas.io" target="_blank">
                                 <i class="ico sp-pub-help"></i>
                                 <p class="tab-title">help</p>
                             </a>
@@ -35,17 +35,18 @@
         <div class="dashboard-page-wrap">
             <section class="dashboard-page dashboard-series clearfix" id="add-series-section">
                 <div class="left-side">
-                    <h1 class="section-title">Edit novel series</h1>
+                    <h1 class="section-title">Edit comic series</h1>
                     <div class="input-form-wrap">
-                        <form id="" action="#" method="post">
+                        <form id="uploadGbr"  enctype="multipart/form-data" method="post" action="#">
                             <div class="row-label">title</div>
                             <div class="row-input">
-                                <input id="title" name="title" class="text js-em-valid" type="text" value="<?=$novel->novel_judul?>" autocomplete="false">
+                                <input id="title" name="title" class="text js-em-valid" type="text" autocomplete="false" value="<?=$comic->comic_judul?>">
                             </div>
                             <div class="row-label">description</div>
                             <div class="row-input">
-                                <textarea id="description" name="description" class="text textarea" autocomplete="false"><?=$novel->novel_desc?></textarea>
+                                <textarea id="description" name="description" class="text textarea" autocomplete="false"><?=$comic->comic_desc?></textarea>
                             </div>
+                            <p>Kosongkan thumbnail jika gambar tidak dirubah</p>
                             <div class="row-merge">
                                 <div class="thumb-wrap mod-wider">
                                     <div class="row-label">thumbnail
@@ -57,7 +58,7 @@
                                         </div>
                                         <div class="thumb-preview-wrap">
 
-                                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="series thumbnail" class="js-thumb observer thumb preview hidden" width="200" height="200">
+                                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="series thumbnail" class="thumb preview hidden" width="200" height="200">
 
                                             <div class="default-bg">
                                                 <i class="sp-ico-upload-big"></i>
@@ -81,24 +82,37 @@
 
                                     <li>
                                         <div class="radio-wrap">
-                                            <?php if($novel->novel_genre == 'Comedy'): ?>
-                                                <input type="radio" class="p-radio" id="genre12" name="genres" value="Comedy" checked>
-                                            <?php else: ?>
-                                                <input type="radio" class="p-radio" id="genre12" name="genres" value="Comedy">
-                                            <?php endif ?>
+                                            <input type="radio" class="p-radio" id="genre23" name="genres" value="BL">
+                                            <label class="p-radio-label" for="genre23">BL
+                                                <div class="inner"></div>
+                                                <div class="switch"></div>
+                                            </label>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="radio-wrap">
+                                            <input type="radio" class="p-radio" id="genre12" name="genres" value="Comedy">
                                             <label class="p-radio-label" for="genre12">Comedy
                                                 <div class="inner"></div>
                                                 <div class="switch"></div>
                                             </label>
                                         </div>
                                     </li>
+
                                     <li>
                                         <div class="radio-wrap">
-                                            <?php if($novel->novel_genre == 'Fantasy'): ?>
-                                                <input type="radio" class="p-radio" id="genre11" name="genres" value="Fantasy" checked>
-                                            <?php else: ?>
-                                                <input type="radio" class="p-radio" id="genre11" name="genres" value="Fantasy">
-                                            <?php endif ?>
+                                            <input type="radio" class="p-radio" id="genre18" name="genres" value="Drama">
+                                            <label class="p-radio-label" for="genre18">Drama
+                                                <div class="inner"></div>
+                                                <div class="switch"></div>
+                                            </label>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="radio-wrap">
+                                            <input type="radio" class="p-radio" id="genre11" name="genres" value="Fantasy">
                                             <label class="p-radio-label" for="genre11">Fantasy
                                                 <div class="inner"></div>
                                                 <div class="switch"></div>
@@ -108,11 +122,7 @@
 
                                     <li>
                                         <div class="radio-wrap">
-                                            <?php if($novel->novel_genre == 'Horror'): ?>
-                                                <input type="radio" class="p-radio" id="genre19" name="genres" value="Horror" checked>
-                                            <?php else: ?>
-                                                <input type="radio" class="p-radio" id="genre19" name="genres" value="Horror">
-                                            <?php endif ?>
+                                            <input type="radio" class="p-radio" id="genre19" name="genres" value="Horror">
                                             <label class="p-radio-label" for="genre19">Horror
                                                 <div class="inner"></div>
                                                 <div class="switch"></div>
@@ -122,11 +132,7 @@
 
                                     <li>
                                         <div class="radio-wrap">
-                                            <?php if($novel->novel_genre == 'Mystery'): ?>
-                                                <input type="radio" class="p-radio" id="genre17" name="genres" value="Mystery" checked>
-                                            <?php else: ?>
-                                                <input type="radio" class="p-radio" id="genre17" name="genres" value="Mystery">
-                                            <?php endif ?>
+                                            <input type="radio" class="p-radio" id="genre17" name="genres" value="Mystery">
                                             <label class="p-radio-label" for="genre17">Mystery
                                                 <div class="inner"></div>
                                                 <div class="switch"></div>
@@ -136,11 +142,7 @@
 
                                     <li>
                                         <div class="radio-wrap">
-                                            <?php if($novel->novel_genre == 'Non-fiction'): ?>
-                                                <input type="radio" class="p-radio" id="genre14" name="genres" value="Non-fiction" checked>
-                                            <?php else: ?>
-                                                <input type="radio" class="p-radio" id="genre14" name="genres" value="Non-fiction">
-                                            <?php endif ?>
+                                            <input type="radio" class="p-radio" id="genre14" name="genres" value="Non-fiction">
                                             <label class="p-radio-label" for="genre14">Non-fiction
                                                 <div class="inner"></div>
                                                 <div class="switch"></div>
@@ -150,11 +152,7 @@
 
                                     <li>
                                         <div class="radio-wrap">
-                                            <?php if($novel->novel_genre == 'Romance'): ?>
-                                                <input type="radio" class="p-radio" id="genre16" name="genres" value="Romance" checked>
-                                            <?php else: ?>
-                                                <input type="radio" class="p-radio" id="genre16" name="genres" value="Romance">
-                                            <?php endif ?>
+                                            <input type="radio" class="p-radio" id="genre16" name="genres" value="Romance">
                                             <label class="p-radio-label" for="genre16">Romance
                                                 <div class="inner"></div>
                                                 <div class="switch"></div>
@@ -164,11 +162,7 @@
 
                                     <li>
                                         <div class="radio-wrap">
-                                            <?php if($novel->novel_genre == 'Science Fiction'): ?>
-                                                <input type="radio" class="p-radio" id="genre15" name="genres" value="Science Fiction" checked>
-                                            <?php else: ?>
-                                                <input type="radio" class="p-radio" id="genre15" name="genres" value="Science Fiction">
-                                            <?php endif ?>
+                                            <input type="radio" class="p-radio" id="genre15" name="genres" value="Science Fiction">
                                             <label class="p-radio-label" for="genre15">Science Fiction
                                                 <div class="inner"></div>
                                                 <div class="switch"></div>
@@ -178,24 +172,19 @@
 
                                     <li>
                                         <div class="radio-wrap">
-                                            <?php if($novel->novel_genre == 'Slice Of Life'): ?>
-                                                <input type="radio" class="p-radio" id="genre20" name="genres" value="Slice Of Life" checked>
-                                            <?php else: ?>
-                                                <input type="radio" class="p-radio" id="genre20" name="genres" value="Slice Of Life">
-                                            <?php endif ?>
+                                            <input type="radio" class="p-radio" id="genre20" name="genres" value="Slice Of Life">
                                             <label class="p-radio-label" for="genre20">Slice of Life
                                                 <div class="inner"></div>
                                                 <div class="switch"></div>
                                             </label>
                                         </div>
                                     </li>
-                                    <input id="genreinput" type="hidden" value="<?= $novel->novel_genre ?>">
-                                    <input id="novelid" type="hidden" value="<?=$novel->novel_id?>">
+                                    <input id="genreinput" type="hidden">
                                 </ul>
                                 <div class="error-message hidden">You may choose a genre.</div>
                             </div>
                             <div class="input-form-footer">
-                                <a href="#" class="mix-btn gradient mint large" id="btnsubmit"><i class="sp-btn-check"></i><span class="btn-label">create series</span></a>
+                                <button type="submit" class="mix-btn gradient mint large" id="btnsubmit"><i class="sp-btn-check"></i><span class="btn-label">create series</span></button>
                             </div>
                             <div>
                             </div>
@@ -220,29 +209,27 @@
 <script type="text/javascript">
     $(function(){
 
+        $('#uploadGbr').submit(function(e){
+            e.preventDefault(); 
+                 $.ajax({
+                     url:'<?= base_url('series/updateComic') ?>',
+                     type:"post",
+                     data:new FormData(this),
+                     processData:false,
+                     contentType:false,
+                     cache:false,
+                     async:false,
+                      success: function(data){
+                          //console.log(data);                          
+                          window.location.href = "<?=base_url('fndashboard')?>";
+                   }
+                 });
+            });
+
         $("input[name='genres']").change(function(){
             $("#genreinput").val($(this).val());
             
         });        
-
-        $("#btnsubmit").click(function(){            
-            var id = $("#novelid").val(); 
-            var title = $("#title").val(); 
-            var desc = $("#description").val(); 
-            var genre = $("#genreinput").val(); 
-            var extension=$('#image').val().replace(/^.*\./, '');
-            
-                $.ajax({
-                    type:"POST",
-                    url: "<?= base_url('series/updateNovel') ?>",
-                    cache: false,
-                    data:{id:id,title:title,desc:desc,genre:genre,ext:extension},
-                    success: function(respond){
-                        window.location.href = "<?=base_url('fndashboard')?>";
-                    }
-                });            
-
-        });
 
     })
 </script>

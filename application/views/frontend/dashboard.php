@@ -13,19 +13,11 @@
 
                     <ul>
                         <li class="on">
-                            <a href="/dashboard/index">
+                            <a href="<?=base_url('fndashboard')?>">
                                 <i class="ico sp-pub-series mod-margin18"></i>
                                 <p class="tab-title">series</p>
                             </a>
                         </li>
-
-                        <li class="">
-                            <a href="/dashboard/stats/index">
-                                <i class="ico sp-pub-dash"></i>
-                                <p class="tab-title">performance</p>
-                            </a>
-                        </li>
-
                     </ul>
 
                 </div>
@@ -103,7 +95,7 @@
                         <header>Help</header>
                         <ul class="contents">
 
-                            <li>Other questions? <a href="https://help.tapas.io" target="_blank">See all help topics</a></li>
+                            <li>Other questions? <a href="#" class="hps">See all help topics</a></li>
                         </ul>
                     </div>
                 </div>
@@ -123,7 +115,7 @@
             data:{key:"novel"},
             success: function(respond){
                 $("#tampil").html(respond);
-                console.log(respond);
+                //console.log(respond);
             }
         });
 
@@ -135,12 +127,10 @@
                     data:{key:"novel"},
                     success: function(respond){
                         $("#tampil").html(respond);
-                        console.log(respond);
+                        //console.log(respond);
                     }
 
                 })
-            
-
         });
 
         $("#btncomic").click(function(){            
@@ -151,13 +141,12 @@
                     data:{key:"comic"},
                     success: function(respond){
                         $("#tampil").html(respond);
-                        console.log(respond);
+                        //console.log(respond);
                     }
-
                 })
-            
-
         });
+
+        
 
     })
 </script>

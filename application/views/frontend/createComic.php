@@ -22,7 +22,7 @@
                 <div class="right-side">
                     <ul>
                         <li class="">
-                            <a href="https://help.tapas.io" target="_blank">
+                            <a href="#" target="_blank">
                                 <i class="ico sp-pub-help"></i>
                                 <p class="tab-title">help</p>
                             </a>
